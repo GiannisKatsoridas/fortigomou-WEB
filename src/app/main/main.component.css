@@ -1,0 +1,256 @@
+.top-info {
+
+  height: 60px;
+  position: relative;
+
+}
+
+.btn-xl {
+  padding: 10px 20px;
+  font-size: 15px;
+  width: 20%;
+}
+
+.vertical-center {
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.nav-item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#my_navbar > a {
+  font-family: 'Trebuchet MS';
+  font-weight: 900 !important;
+}
+
+.navbar-nav > .active > a {
+  color: aqua !important;
+}
+
+.nav-item > a:hover {
+  color: aqua !important;
+}
+
+.main_header {
+  color: #02AFF1;
+  text-align: center;
+  font-family: "Trebuchet MS";
+  font-weight: 900;
+}
+
+.sub_header {
+  color: #02AFF1;
+  text-align: center;
+  font-family: "Trebuchet MS";
+}
+
+#services {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+}
+
+.box {
+  background: transparent;
+  width: 33%;
+  height: 300px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.leftbox {
+  float: left;
+}
+
+.middlebox {
+  float: left;
+  width: 34%;
+}
+
+.rightbox {
+  float: right;
+}
+
+.box > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.box > h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: #02AFF1;
+  font-family: "Trebuchet MS";
+}
+
+#get_quick_quote_now_button {
+  float: left;
+}
+
+.get_quote_buttons {
+  margin: 30px auto;
+  display: block;
+  font-family: "Trebuchet MS";
+  font-style: italic;
+  font-weight: 700;
+}
+
+.moving_request_box {
+  padding: 20px;
+  width: 45%;
+  background: white;
+  height: 100%;
+  box-shadow: 10px 10px 5px grey;
+}
+
+#latest_moving_requests_content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #e8e8e8;
+}
+
+#right_moving_request > table > tr > td {
+  font-family: "Trebuchet MS";
+}
+
+#left_moving_request > table > tr > td {
+  font-family: "Trebuchet MS";
+}
+
+#view_all_requests_button > button {
+  margin: 30px auto;
+  display: block;
+  font-family: "Trebuchet MS";
+  font-weight: 500;
+}
+
+.testimonial {
+  color: #256cdf;
+  text-align: center;
+  font-family: "Trebuchet MS";
+  font-weight: 700;
+}
+
+.found_transporter_text {
+  font-family: "Trebuchet MS";
+  font-weight: 700;
+}
+
+#get_instant_quote {
+  background-image: url("../../assets/img/specialprices.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+#get_instant_quote_button > button {
+  margin: 40px 40px 0 40px;
+  float: right;
+  font-family: "Trebuchet MS";
+  font-style: italic;
+  font-weight: 700;
+}
+
+#stats_div {
+  background: #dcdcdc;
+  height: 260px;
+}
+
+.stat_figure {
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  margin: auto;
+}
+
+.stat_figure_header {
+  line-height: 100px;
+  color: #256cdf;
+  font-weight: 700;
+  font-family: "Trebuchet MS";
+}
+
+.round_circle {
+  margin: 40px auto;
+  height: 100px;
+  width: 100px;
+  background: #FFFFFF;
+  border-radius: 50px;
+}
+
+.stat_name {
+  text-align: center;
+}
+
+.why_choose_us_box {
+  width: 26%;
+  height: 100%;
+  padding: 30px;
+  float: left;
+}
+
+.why_choose_us_image {
+  height: 80%;
+  width: 100%;
+}
+
+.why_choose_us_image > img {
+  max-width: 100%;
+}
+
+.why_choose_us_text {
+  width: 100%;
+  height: 20%;
+  margin: 20px 10px auto 10px;
+}
+
+.why_choose_us_text > h6 {
+  font-family: "Trebuchet MS";
+  color: #02AFF1;
+}
+
+#receive_quick_quotes_content {
+  height: 300px;
+  width: 100%;
+  margin: 40px 0 20px 0;
+  background-image: url("../../assets/img/getquote.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+#receive_quick_quotes_header {
+  padding-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+#receive_quick_quotes_text {
+  width: 40%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#receive_quick_quotes_button > button {
+  margin: 20px;
+  font-family: "Trebuchet MS";
+  font-weight: 500;
+}
+
+#how_it_works_text {
+  background-image: url("../../assets/img/howitworks2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
