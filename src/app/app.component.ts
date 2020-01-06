@@ -13,22 +13,8 @@ export class AppComponent {
   title = 'FortigoMou-WEB';
   result: string;
 
-  constructor(private http: HttpClient) {
+  constructor() {
 
-    const httpHeaders = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    const request: TestMethodRequest = new class implements TestMethodRequest {
-      request: 0;
-    }();
-
-    // tslint:disable-next-line:max-line-length
-    this.http.post<TestMethodResponse>('http://localhost:5000/api/fortigomou/testmethod', request, httpHeaders).subscribe((data: TestMethodResponse) => {
-      this.result = data.result;
-    });
 
   }
 }

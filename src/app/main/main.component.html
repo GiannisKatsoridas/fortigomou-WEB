@@ -9,14 +9,92 @@
   <button mdbBtn type="button" class="btn btn-outline-info waves-effect"
           style="float: right; font-family: 'Trebuchet MS'">Get Quote Now!
   </button>
-  <button mdbBtn type="button" color="elegant" class="btn btn-elegant" mdbWavesEffect
-          style="float: right; font-family: 'Trebuchet MS'"><i
-    class="fa fa-truck fa-lg mr-3" aria-hidden="true"></i>Transporter Login
-  </button>
-  <button mdbBtn type="button" color="elegant" class="btn btn-elegant" mdbWavesEffect
-          style="float: right; font-family: 'Trebuchet MS'"><i
-    class="fa fa-user-o fa-lg mr-3" aria-hidden="true"></i>Individual Login
-  </button>
+  <div *ngIf="cookieService.get('loggedIn') == ''">
+    <div id="transporter_login_div">
+      <button (click)="displayLoginTransporter()" id="transporter_login_button" mdbBtn type="button" color="elegant"
+              class="btn btn-elegant" mdbWavesEffect
+              style="float: right; font-family: 'Trebuchet MS'"><i
+        class="fa fa-truck fa-lg mr-3" aria-hidden="true"></i>Transporter Login
+      </button>
+      <div id="login_transporter" class="login_forms" style="width: 220px;">
+
+        <form method="post">
+
+          <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <div class="checkbox checkbox-success">
+              <input id="transporter_remember_me" class="styled" type="checkbox" checked>
+              <label for="transporter_remember_me">
+                Remember Me
+              </label>
+            </div>
+          </div>
+
+          <div class="container">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div id="individual_login_div">
+      <button mdbBtn (click)="displayLoginIndividual()" id="individual_login_button" type="button" color="elegant"
+              class="btn btn-elegant"
+              mdbWavesEffect
+              style="float: right; font-family: 'Trebuchet MS'"><i
+        class="fa fa-user-o fa-lg mr-3" aria-hidden="true"></i>Individual Login
+      </button>
+
+      <div id="login_individual" class="login_forms" style="width: 210px;">
+
+        <form #myform="ngForm" (ngSubmit)="loginIndividual(username, password)">
+
+          <div class="container">
+            <label for="individual_login_username"><b>Username</b></label>
+            <input #username id="individual_login_username" type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="individual_login_password"><b>Password</b></label>
+            <input #password id="individual_login_password" type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Login</button>
+
+            <div class="container" *ngIf="individualLoginSuccessful == false">
+              <span class="errorMessage">{{errorMessage}}</span>
+            </div>
+
+            <div class="checkbox checkbox-success">
+              <input id="individual_remember_me" class="styled" type="checkbox" checked>
+              <label for="individual_remember_me">
+                Remember Me
+              </label>
+            </div>
+
+          </div>
+
+          <div class="container">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="cookieService.get('loggedIn') === 'yes'">
+    <button (click)="logout()" id="logout_button" mdbBtn type="button" color="amber"
+            class="btn btn-elegant" mdbWavesEffect
+            style="float: right; font-family: 'Trebuchet MS'">Logout
+    </button>
+    <div>
+      <h2 style="float: right; margin-right: 20px; margin-top: 10px; font-family: 'Trebuchet MS'; font-weight: 800">Welcome <i>{{username}}</i></h2>
+    </div>
+  </div>
 
 </div>
 
@@ -42,8 +120,8 @@
         <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Contact
           Us</a>
       </li>
-
     </ul>
+    <button *ngIf="cookieService.get('loggedIn') == ''" type="button" class="btn btn-warning register-button">Register</button>
 
   </div>
 
@@ -63,7 +141,8 @@
 
       <div id="poster_first_feature" style="float: left; height: 100%; width: 30%;">
         <div style="height: 70%; width: 100%;">
-          <div style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center">
+          <div
+            style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center">
             <i class="fa fa-truck fa-3x" style="line-height: 100px; color: #02AFF1"></i>
           </div>
         </div>
@@ -74,7 +153,8 @@
 
       <div id="poster_second_feature" style="float: left; height: 100%; width: 30%;">
         <div style="height: 70%; width: 100%">
-          <div style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center;">
+          <div
+            style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center;">
             <i class="fa fa-bolt fa-3x" style="line-height: 100px; color: #02AFF1"></i>
           </div>
         </div>
@@ -85,7 +165,8 @@
 
       <div id="poster_third_feature" style="float: left; height: 100%; width: 30%;">
         <div style="height: 70%; width: 100%">
-          <div style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center">
+          <div
+            style="height: 100px; width: 100px; border-radius: 50%; background: #FFFFFF; margin: auto; text-align: center">
             <i class="fa fa-thumbs-up fa-3x" style="line-height: 100px; color: #02AFF1"></i>
           </div>
         </div>
@@ -172,7 +253,7 @@
 
 <div id="how_it_works_image">
 
-<!--  <img src="../../assets/img/howitworks2.png" alt="how_it_works" style="width: 100%;">-->
+  <!--  <img src="../../assets/img/howitworks2.png" alt="how_it_works" style="width: 100%;">-->
 
   <div id="how_it_works_text" style="height: 300px; width: 100%;">
 
@@ -194,7 +275,8 @@
         <h4 class="main_header" style="color: #FFFFFF !important; line-height: 45px">Receive Free Quotes</h4>
       </div>
       <div style="height: 25%; width: 100%; text-align: center; margin-top: 15px">
-        <h6 style="color: #FFFFFF; font-family: 'Trebuchet MS';">Receive free, no obligation quotes. All online with no sales calls.</h6>
+        <h6 style="color: #FFFFFF; font-family: 'Trebuchet MS';">Receive free, no obligation quotes. All online with no
+          sales calls.</h6>
       </div>
     </div>
 
@@ -304,7 +386,8 @@
   </div>
 
   <div id="special_gift_text" style="width: 100%; height: 40%;">
-    <h4 class="main_header" style="float: right; color: #FFFFFF !important; margin: 30px">SPECIAL GIFT & DISCOUNT FOR MILITARIES</h4>
+    <h4 class="main_header" style="float: right; color: #FFFFFF !important; margin: 30px">SPECIAL GIFT & DISCOUNT FOR
+      MILITARIES</h4>
   </div>
 
   <div style="height: 10%; width: 100%;"></div>
