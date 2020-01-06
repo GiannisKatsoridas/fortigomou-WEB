@@ -1,1 +1,128 @@
-<p>navbar works!</p>
+<div class="top-info">
+
+  <img (click)="routeHome()" src="../../assets/img/logo.png" alt="logo" style="float: left; max-height: 100%; cursor: pointer">
+
+  <span class="flag-icon flag-icon-gb"
+        style="float: right; cursor: pointer; height: 30px; width: 30px; margin: 12px;"></span>
+  <span class="flag-icon flag-icon-gr"
+        style="float: right; cursor: pointer; height: 30px; width: 30px; margin: 12px"></span>
+  <button mdbBtn type="button" class="btn btn-outline-info waves-effect"
+          style="float: right; font-family: 'Trebuchet MS'">Get Quote Now!
+  </button>
+  <div *ngIf="cookieService.get('loggedIn') == ''">
+    <div id="transporter_login_div">
+      <button (click)="displayLoginTransporter()" id="transporter_login_button" mdbBtn type="button" color="elegant"
+              class="btn btn-elegant" mdbWavesEffect
+              style="float: right; font-family: 'Trebuchet MS'"><i
+        class="fa fa-truck fa-lg mr-3" aria-hidden="true"></i>Transporter Login
+      </button>
+      <div id="login_transporter" class="login_forms" style="width: 220px;">
+
+        <form (ngSubmit)="loginTransporter(t_username, t_password)">
+
+          <div class="container">
+            <label><b>Username</b></label>
+            <input #t_username type="text" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Password</b></label>
+            <input #t_password type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <div class="checkbox checkbox-success">
+              <input id="transporter_remember_me" class="styled" type="checkbox" checked>
+              <label for="transporter_remember_me">
+                Remember Me
+              </label>
+            </div>
+          </div>
+
+          <div class="container">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+    <div id="individual_login_div">
+      <button mdbBtn (click)="displayLoginIndividual()" id="individual_login_button" type="button" color="elegant"
+              class="btn btn-elegant"
+              mdbWavesEffect
+              style="float: right; font-family: 'Trebuchet MS'"><i
+        class="fa fa-user-o fa-lg mr-3" aria-hidden="true"></i>Individual Login
+      </button>
+
+      <div id="login_individual" class="login_forms" style="width: 210px;">
+
+        <form #myform="ngForm" (ngSubmit)="loginIndividual(i_username, i_password)">
+
+          <div class="container">
+            <label for="individual_login_username"><b>Username</b></label>
+            <input #i_username id="individual_login_username" type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="individual_login_password"><b>Password</b></label>
+            <input #i_password id="individual_login_password" type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Login</button>
+
+            <div class="container" *ngIf="individualLoginSuccessful == false">
+              <span class="errorMessage">{{errorMessage}}</span>
+            </div>
+
+            <div class="checkbox checkbox-success">
+              <input id="individual_remember_me" class="styled" type="checkbox" checked>
+              <label for="individual_remember_me">
+                Remember Me
+              </label>
+            </div>
+
+          </div>
+
+          <div class="container">
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="cookieService.get('loggedIn') === 'yes'">
+    <button (click)="logout()" id="logout_button" mdbBtn type="button" color="amber"
+            class="btn btn-elegant" mdbWavesEffect
+            style="float: right; font-family: 'Trebuchet MS'">Logout
+    </button>
+    <div>
+      <h2 style="float: right; margin-right: 20px; margin-top: 10px; font-family: 'Trebuchet MS'; font-weight: 800">Welcome <i>{{username}}</i></h2>
+    </div>
+  </div>
+
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="collapse navbar-collapse" id="my_navbar">
+
+    <ul class="navbar-nav mr-auto" style="margin-left: 30px">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Post Moving
+          Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Search Moving
+          Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Contact
+          Us</a>
+      </li>
+    </ul>
+    <button *ngIf="cookieService.get('loggedIn') == ''" type="button" (click)="routeRegister()" class="btn btn-warning register-button">Register</button>
+
+  </div>
+
+</nav>

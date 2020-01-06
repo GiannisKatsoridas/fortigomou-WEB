@@ -1,1 +1,27 @@
-<p>register works!</p>
+<div id="registration_two_options" style="height: 100px; width: 100%; margin-top: 30px;">
+
+  <div style="width: 10%; height: 100%; float: left;"></div>
+
+  <div  #registrationIndividualBox (click)="changeToIndividual()" class="registration_options_box" id="registration_individual_option" style="float:left; margin-left: 30px; background: #02AFF1">
+
+    <h3 #registrationIndividualText class="registration_text_selected">I am an Individual</h3>
+
+  </div>
+
+  <div #registrationTransporterBox (click)="changeToTransporter()" class="registration_options_box" id="registration_transporter_option" style="float:left; background: #cccccc; margin-left: 10px; cursor: pointer;">
+
+    <h3 #registrationTransporterText class="registration_text_unselected">I am a Transporter</h3>
+
+  </div>
+
+  <div style="width: 10%; height: 100%; float: right;"></div>
+
+</div>
+
+<div *ngIf="type==1" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #individual_registration id="individual_registration" style="background: #4CAF50; height: 300px; width: 100%;">
+
+</div>
+
+<div *ngIf="type==2" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #transporter_registration id="transporter_registration" style="background: #319dff; height: 300px; width: 100%;">
+
+</div>

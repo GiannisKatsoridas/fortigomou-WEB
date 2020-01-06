@@ -1,0 +1,25 @@
+.registration_options_box {
+
+  height: 70%;
+  width: 38%;
+  text-align: center;
+
+}
+
+.registration_text_selected {
+
+  color: #FFFFFF;
+  font-family: "Trebuchet MS";
+  font-weight: 900;
+  line-height: 70px;
+
+}
+
+.registration_text_unselected {
+
+  color: #02AFF1;
+  font-family: "Trebuchet MS";
+  font-weight: 900;
+  line-height: 70px;
+
+}
