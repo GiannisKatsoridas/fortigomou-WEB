@@ -2,13 +2,16 @@
 
   <div style="width: 10%; height: 100%; float: left;"></div>
 
-  <div  #registrationIndividualBox (click)="changeToIndividual()" class="registration_options_box" id="registration_individual_option" style="float:left; margin-left: 30px; background: #02AFF1">
+  <div #registrationIndividualBox (click)="changeToIndividual()" class="registration_options_box"
+       id="registration_individual_option" style="float:left; margin-left: 30px; background: #02AFF1">
 
     <h3 #registrationIndividualText class="registration_text_selected">I am an Individual</h3>
 
   </div>
 
-  <div #registrationTransporterBox (click)="changeToTransporter()" class="registration_options_box" id="registration_transporter_option" style="float:left; background: #cccccc; margin-left: 10px; cursor: pointer;">
+  <div #registrationTransporterBox (click)="changeToTransporter()" class="registration_options_box"
+       id="registration_transporter_option"
+       style="float:left; background: #cccccc; margin-left: 10px; cursor: pointer;">
 
     <h3 #registrationTransporterText class="registration_text_unselected">I am a Transporter</h3>
 
@@ -18,10 +21,263 @@
 
 </div>
 
-<div *ngIf="type==1" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #individual_registration id="individual_registration" style="background: #4CAF50; height: 300px; width: 100%;">
+<div #form_content id="form_content" style="height: 600px; width: 100%;">
+
+  <div style="width: 10%; height: 100%; float: left;"></div>
+
+  <div *ngIf="type==1" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #individual_registration
+       id="individual_registration" style="height: 100%; width: 45%; float: left;">
+
+    <div style="width: 100%; height: 100%;">
+
+      <form>
+
+        <div class="form_header">
+
+          <h3 style="font-family: 'Trebuchet MS'">Individual Details</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_firstname"><b>First Name</b></label>
+            <input #individual_firstname id="individual_firstname" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_lastname"><b>Last Name</b></label>
+            <input #individual_lastname id="individual_lastname" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="individual_gender"><b>Gender</b></label>
+            <select #individual_gender id="individual_gender" class="form-control form_input">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_landline"><b>Landline</b></label>
+            <input #individual_landline id="individual_landline" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_mobile"><b>Mobile</b></label>
+            <input #individual_mobile id="individual_mobile" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="individual_email"><b>Email Address</b></label>
+            <input #individual_email type="email" id="individual_email" class="form-control form_input">
+          </div>
+
+        </div>
+
+        <div class="form_header">
+
+          <h3 style="font-family: 'Trebuchet MS'">Access Details</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_username"><b>Username</b></label>
+            <input #individual_username id="individual_username" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_password"><b>Password</b></label>
+            <input #individual_password id="individual_password" type="password" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="individual_password2"><b>Confirm Password</b></label>
+            <input #individual_password2 id="individual_password2" type="password" class="form_input" required>
+          </div>
+
+        </div>
+
+        <div style="width: 100%">
+
+          <h6 style="font-family: 'Trebuchet MS'; color: grey">According to our policy, the user name must not refer to
+            your surname or contact details (eg. email, phone number etc).</h6>
+
+        </div>
+
+        <div class="checkbox checkbox-success">
+          <input id="individual_accepts" class="styled" type="checkbox">
+          <label class="form_label" for="individual_accepts">
+            I declare that I am over 18 years old and I agree with the <a href="#">Terms of Use</a>.
+          </label>
+        </div>
+
+        <button class="btn btn-primary form_label"
+                style="background-color: #02AFF1 !important; border-color: #02AFF1 !important" type="submit">Register
+        </button>
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+  <div *ngIf="type==2" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #transporter_registration
+       id="transporter_registration" style="height: 100%; width: 45%; float: left;">
+
+    <div style="width: 100%; height: 100%;">
+
+      <form>
+
+        <div class="form_header">
+
+          <h3 style="font-family: 'Trebuchet MS'">Individual Details</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_firstname"><b>First Name</b></label>
+            <input #transporter_firstname id="transporter_firstname" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_lastname"><b>Last Name</b></label>
+            <input #transporter_lastname id="transporter_lastname" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="transporter_gender"><b>Gender</b></label>
+            <select #transporter_gender id="transporter_gender" class="form-control form_input">
+              <option value="male" selected>Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_landline"><b>Landline</b></label>
+            <input #transporter_landline id="transporter_landline" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_mobile"><b>Mobile</b></label>
+            <input #transporter_mobile id="transporter_mobile" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="transporter_email"><b>Email Address</b></label>
+            <input #transporter_email type="email" id="transporter_email" class="form-control form_input">
+          </div>
+
+        </div>
+
+        <div class="form_header">
+
+          <h3 style="font-family: 'Trebuchet MS'">Access Details</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_username"><b>Username</b></label>
+            <input #transporter_username id="transporter_username" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_password"><b>Password</b></label>
+            <input #transporter_password id="transporter_password" type="password" class="form_input" required>
+          </div>
+
+          <div class="container" style="width: 33%; float: right;">
+            <label class="form_label" for="transporter_password2"><b>Confirm Password</b></label>
+            <input #transporter_password2 id="transporter_password2" type="password" class="form_input" required>
+          </div>
+
+        </div>
+
+        <div style="width: 100%">
+
+          <h6 style="font-family: 'Trebuchet MS'; color: grey">According to our policy, the user name must not refer to
+            your surname or contact details (eg. email, phone number etc).</h6>
+
+        </div>
+
+        <div class="checkbox checkbox-success">
+          <input id="transporter_accepts" class="styled" type="checkbox">
+          <label class="form_label" for="transporter_accepts">
+            I declare that I am over 18 years old and I agree with the <a href="#">Terms of Use</a>.
+          </label>
+        </div>
+
+        <button class="btn btn-primary form_label"
+                style="background-color: #02AFF1 !important; border-color: #02AFF1 !important" type="submit">Register
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="vertical_line" style="float: left"></div>
+
+  <form id="already_have_an_account"
+        style="width: 32%; height: 100%; float: left; padding-top:40px; text-align: center">
+
+    <h3 style="font-family: 'Trebuchet MS'; color: #02AFF1; font-weight: 700; margin-bottom: 20px">Already have an
+      account?</h3>
+
+    <div class="form_row">
+
+      <div class="container" style="width: 60%;">
+        <label class="form_label" for="login_username"><b>Username</b></label>
+        <input #login_username id="login_username" class="form_input" required>
+      </div>
+
+    </div>
+
+    <div class="form_row">
+
+      <div class="container" style="width: 60%;">
+        <label class="form_label" for="login_password"><b>Password</b></label>
+        <input type="password" #login_password id="login_password" class="form_input" required>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary form_label"
+            style="background-color: #02AFF1 !important; border-color: #02AFF1 !important" type="submit">Login
+    </button>
+
+  </form>
+
+  <div style="width: 5%; height: 100%; float: right;"></div>
 
 </div>
 
-<div *ngIf="type==2" [@fadeInOut] (@fadeInOut.done)="animationDone($event)" #transporter_registration id="transporter_registration" style="background: #319dff; height: 300px; width: 100%;">
 
+<div id="footer" style="width: 100%; text-align: center; margin-bottom: 5px">
+  <p style="color: gray;">&copy; 2019 FortigoMou. All rights reserved. <a>Terms Of Use</a> | <a>Privacy Policy</a></p>
 </div>
+

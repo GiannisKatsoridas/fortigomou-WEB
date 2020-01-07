@@ -12,7 +12,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     state('void', style({
       opacity: 0
     })),
-    transition('void <=> *', animate(1000)),
+    transition('void <=> *', animate(500)),
   ]),
   ]
 })
@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('registrationTransporterText', {static: false}) registrationTransporterText: ElementRef;
   @ViewChild('individual_registration', {static: false}) individualRegistration: ElementRef;
   @ViewChild('transporter_registration', {static: false}) transporterRegistration: ElementRef;
+  @ViewChild('form_content', {static: false}) formContent: ElementRef;
 
 
   constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) {
@@ -53,6 +54,8 @@ export class RegisterComponent implements OnInit {
     this.type = 3;
 
     this.hasChanged = true;
+
+    this.formContent.nativeElement.style.height = '600px';
   }
 
   changeToTransporter() {
@@ -73,6 +76,8 @@ export class RegisterComponent implements OnInit {
     this.type = 4;
 
     this.hasChanged = true;
+
+    this.formContent.nativeElement.style.height = '800px';
   }
 
   animationDone($event) {
