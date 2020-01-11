@@ -21,7 +21,7 @@
 
 </div>
 
-<div #form_content id="form_content" style="height: 600px; width: 100%;">
+<div #form_content id="form_content" style="height: 800px; overflow: hidden; width: 100%;">
 
   <div style="width: 10%; height: 100%; float: left;"></div>
 
@@ -30,7 +30,7 @@
 
     <div style="width: 100%; height: 100%;">
 
-      <form>
+      <form (ngSubmit)="registerIndividual()" #f="ngForm">
 
         <div class="form_header">
 
@@ -43,20 +43,23 @@
         <div class="form_row">
 
           <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_firstname"><b>First Name</b></label>
-            <input #individual_firstname id="individual_firstname" class="form_input" required>
+            <label class="form_label" for="individual_firstname"><b>*First Name</b></label>
+            <input #individual_firstname="ngModel" ngModel name="individual_firstname" id="individual_firstname"
+                   class="form-control form_input" required>
           </div>
 
           <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_lastname"><b>Last Name</b></label>
-            <input #individual_lastname id="individual_lastname" class="form_input" required>
+            <label class="form_label" for="individual_lastname"><b>*Last Name</b></label>
+            <input #individual_lastname="ngModel" ngModel name="individual_lastname" id="individual_lastname"
+                   class="form-control form_input" required>
           </div>
 
           <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="individual_gender"><b>Gender</b></label>
-            <select #individual_gender id="individual_gender" class="form-control form_input">
-              <option value="male" selected>Male</option>
-              <option value="female">Female</option>
+            <label class="form_label" for="individual_gender"><b>*Gender</b></label>
+            <select #individual_gender id="individual_gender" name="individual_gender"
+                    class="form-control form-control form_input">
+              <option value=0 selected>Male</option>
+              <option value=1>Female</option>
             </select>
           </div>
 
@@ -65,23 +68,53 @@
         <div class="form_row">
 
           <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_landline"><b>Landline</b></label>
-            <input #individual_landline id="individual_landline" class="form_input" required>
+            <label class="form_label" for="individual_landline"><b>*Landline</b></label>
+            <input #individual_landline="ngModel" ngModel id="individual_landline" name="individual_landline"
+                   class="form-control form_input" required>
           </div>
 
           <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_mobile"><b>Mobile</b></label>
-            <input #individual_mobile id="individual_mobile" class="form_input" required>
+            <label class="form_label" for="individual_mobile"><b>*Mobile</b></label>
+            <input #individual_mobile="ngModel" ngModel id="individual_mobile" name="individual_mobile"
+                   class="form-control form_input"
+                   required>
           </div>
 
           <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="individual_email"><b>Email Address</b></label>
-            <input #individual_email type="email" id="individual_email" class="form-control form_input">
+            <label class="form_label" for="individual_email"><b>*Email Address</b></label>
+            <input #individual_email="ngModel" ngModel type="email" email id="individual_email" name="individual_email"
+                   class="form-control form_input" required>
           </div>
 
         </div>
 
-        <div class="form_header">
+        <div class="form-row text-danger"
+             *ngIf="individual_firstname.invalid && (individual_firstname.dirty || individual_firstname.touched)">
+          First Name is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="individual_lastname.invalid && (individual_lastname.dirty || individual_lastname.touched)">
+          Last Name is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="individual_landline.invalid && (individual_landline.dirty || individual_landline.touched)">
+          Landline is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="individual_mobile.invalid && (individual_mobile.dirty || individual_mobile.touched)">
+          Mobile is required.
+        </div>
+        <div class="text-danger"
+             *ngIf="individual_email.invalid && (individual_email.dirty || individual_email.touched)">
+          <div class="form-row" *ngIf="individual_email.errors['required']">
+            Email is required.
+          </div>
+          <div class="form-row" *ngIf="individual_email.errors['email']">
+            Email is not valid.
+          </div>
+        </div>
+
+        <div class="form_header" style="margin-top: 15px">
 
           <h3 style="font-family: 'Trebuchet MS'">Access Details</h3>
 
@@ -91,24 +124,49 @@
 
         <div class="form_row">
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_username"><b>Username</b></label>
-            <input #individual_username id="individual_username" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_username"><b>*Username</b></label>
+            <input #individual_username="ngModel" name="individual_username" id="individual_username"
+                   class="form-control form_input" ngModel required>
           </div>
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="individual_password"><b>Password</b></label>
-            <input #individual_password id="individual_password" type="password" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="individual_password"><b>*Password</b></label>
+            <input #individual_password="ngModel" name="individual_password" id="individual_password" type="password"
+                   class="form-control form_input" ngModel
+                   required>
           </div>
 
-          <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="individual_password2"><b>Confirm Password</b></label>
-            <input #individual_password2 id="individual_password2" type="password" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: right;">
+            <label class="form_label" for="individual_password2"><b>*Confirm Password</b></label>
+            <input #individual_password2="ngModel" name="individual_password2" id="individual_password2"
+                   type="password" class="form-control form_input" ngModel compare="individual_password"
+                   required>
           </div>
 
         </div>
 
-        <div style="width: 100%">
+
+        <div class="form-row text-danger"
+             *ngIf="individual_username.invalid && (individual_username.dirty || individual_username.touched)">
+          Username is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="individual_password.invalid && (individual_password.dirty || individual_password.touched)">
+          Password is required.
+        </div>
+        <div class="text-danger"
+             *ngIf="individual_password2.invalid && (individual_password2.dirty || individual_password2.touched)">
+          <div class="form-row" *ngIf="individual_password2.errors['required']">
+            Confirmation Password is required.
+          </div>
+          <div class="form-row" *ngIf="individual_password2.errors['compare']">
+            Confirmation Password does not match.
+          </div>
+        </div>
+
+
+        <div style="width: 100%; margin-top: 10px">
 
           <h6 style="font-family: 'Trebuchet MS'; color: grey">According to our policy, the user name must not refer to
             your surname or contact details (eg. email, phone number etc).</h6>
@@ -116,13 +174,13 @@
         </div>
 
         <div class="checkbox checkbox-success">
-          <input id="individual_accepts" class="styled" type="checkbox">
+          <input id="individual_accepts" class="styled" type="checkbox" name="active" ngModel required>
           <label class="form_label" for="individual_accepts">
             I declare that I am over 18 years old and I agree with the <a href="#">Terms of Use</a>.
           </label>
         </div>
 
-        <button class="btn btn-primary form_label"
+        <button class="btn btn-primary form_label" [disabled]="f.invalid"
                 style="background-color: #02AFF1 !important; border-color: #02AFF1 !important" type="submit">Register
         </button>
 
@@ -138,11 +196,11 @@
 
     <div style="width: 100%; height: 100%;">
 
-      <form>
+      <form (ngSubmit)="registerTransporter()" #tf="ngForm">
 
         <div class="form_header">
 
-          <h3 style="font-family: 'Trebuchet MS'">Individual Details</h3>
+          <h3 style="font-family: 'Trebuchet MS'">Business Details</h3>
 
         </div>
 
@@ -150,21 +208,102 @@
 
         <div class="form_row">
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_firstname"><b>First Name</b></label>
-            <input #transporter_firstname id="transporter_firstname" class="form_input" required>
+          <div class="container form-group" style="width: 66%; float: left;">
+            <label class="form_label" for="transporter_business_name"><b>*Business Name</b></label>
+            <input #transporter_business_name="ngModel" ngModel name="transporter_business_name"
+                   id="transporter_business_name"
+                   class="form-control form_input" required>
           </div>
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_lastname"><b>Last Name</b></label>
-            <input #transporter_lastname id="transporter_lastname" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_business_title"><b>*Business Title</b></label>
+            <input #transporter_business_title="ngModel" ngModel name="transporter_business_title"
+                   id="transporter_business_title" class="form-control form_input" required>
           </div>
 
-          <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="transporter_gender"><b>Gender</b></label>
-            <select #transporter_gender id="transporter_gender" class="form-control form_input">
-              <option value="male" selected>Male</option>
-              <option value="female">Female</option>
+        </div>
+
+        <div class="form_row">
+
+          <div class="container form-group" style="width: 66%; float: left;">
+            <label class="form_label" for="transporter_objective"><b>*Objective</b></label>
+            <input #transporter_objective="ngModel" ngModel name="transporter_objective" id="transporter_objective"
+                   class="form-control form_input" required>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_website"><b>*Website</b></label>
+            <input #transporter_website="ngModel" ngModel name="transporter_website" id="transporter_website"
+                   class="form-control form_input" required>
+          </div>
+
+        </div>
+
+        <div class="form_row">
+
+          <div class="container form-group" style="width: 66%; float: left;">
+            <label class="form_label" for="transporter_vat"><b>*V.A.T. Number</b></label>
+            <input #transporter_vat="ngModel" ngModel name="transporter_vat" id="transporter_vat"
+                   class="form-control form_input" required>
+          </div>
+
+        </div>
+
+        <div class="form-row text-danger"
+             *ngIf="transporter_business_name.invalid && (transporter_business_name.dirty || transporter_business_name.touched)">
+          Business Name is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_business_title.invalid && (transporter_business_title.dirty || transporter_business_title.touched)">
+          Business Title is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_objective.invalid && (transporter_objective.dirty || transporter_objective.touched)">
+          Objective is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_website.invalid && (transporter_website.dirty || transporter_website.touched)">
+          Website is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_vat.invalid && (transporter_vat.dirty || transporter_vat.touched)">
+          VAT Number is required.
+        </div>
+
+        <div class="form_header" style="margin-top: 15px">
+
+          <h3 style="font-family: 'Trebuchet MS'">Headquarters Address</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_country"><b>*Country</b></label>
+            <select #transporter_country name="tranporter_country" id="transporter_country"
+                    class="form-control form-control form_input">
+              <option value="1" selected>Greece</option>
+              <option value="2">Italy</option>
+            </select>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_region"><b>*Region</b></label>
+            <select #transporter_region name="tranposrter_region" id="transporter_region"
+                    class="form-control form-control form_input">
+              <option value="1" selected>Athens</option>
+              <option value="2">Patras</option>
+            </select>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_prefecture"><b>*Prefecture</b></label>
+            <select #transporter_prefecture name="tranposrter_prefecture" id="transporter_prefecture"
+                    class="form-control form_input">
+              <option value="1" selected>Attica</option>
+              <option value="2">Thrace</option>
             </select>
           </div>
 
@@ -172,24 +311,125 @@
 
         <div class="form_row">
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_landline"><b>Landline</b></label>
-            <input #transporter_landline id="transporter_landline" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_city"><b>*City/Area</b></label>
+            <input #transporter_city="ngModel" ngModel name="transporter_city" id="transporter_city"
+                   class="form-control form_input" required>
           </div>
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_mobile"><b>Mobile</b></label>
-            <input #transporter_mobile id="transporter_mobile" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_address"><b>*Address</b></label>
+            <input #transporter_address="ngModel" ngModel name="transporter_address" id="transporter_address"
+                   class="form-control form_input" required>
           </div>
 
-          <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="transporter_email"><b>Email Address</b></label>
-            <input #transporter_email type="email" id="transporter_email" class="form-control form_input">
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_postal_code"><b>*Postal Code</b></label>
+            <input #transporter_postal_code="ngModel" ngModel name="transporter_postal_code" id="transporter_postal_code"
+                   class="form-control form_input" required>
           </div>
 
         </div>
 
-        <div class="form_header">
+        <div class="form-row text-danger"
+             *ngIf="transporter_city.invalid && (transporter_city.dirty || transporter_city.touched)">
+          City is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_address.invalid && (transporter_address.dirty || transporter_address.touched)">
+          Address is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_postal_code.invalid && (transporter_postal_code.dirty || transporter_postal_code.touched)">
+          Postal Code is required.
+        </div>
+
+        <div class="form_header" style="margin-top: 15px">
+
+          <h3 style="font-family: 'Trebuchet MS'">Contact Details</h3>
+
+        </div>
+
+        <div class="division_line"></div>
+
+        <div class="form_row">
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_business_phone"><b>*Business Phone</b></label>
+            <input #transporter_business_phone="ngModel" ngModel name="transporter_business_phone"
+                   id="transporter_business_phone" class="form-control form_input" required>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_fax"><b>*Fax</b></label>
+            <input #transporter_fax="ngModel" ngModel name="transporter_fax" id="transporter_fax"
+                   class="form-control form_input" required>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_email"><b>*Email Address</b></label>
+            <input #transporter_email="ngModel" ngModel name="transporter_email" id="transporter_email"
+                   class="form-control form_input" email required>
+          </div>
+
+        </div>
+
+        <div class="form_row">
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_contact_name"><b>*Contact Name</b></label>
+            <input #transporter_contact_name="ngModel" ngModel name="transporter_contact_name"
+                   id="transporter_contact_name"
+                   class="form-control form_input" required>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_contact_phone"><b>*Contact Phone</b></label>
+            <input #transporter_contact_phone="ngModel" ngModel name="transporter_contact_phone"
+                   id="transporter_contact_phone"
+                   class="form-control form_input" required>
+          </div>
+
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_mobile"><b>*Mobile</b></label>
+            <input #transporter_mobile="ngModel" ngModel name="transporter_mobile" id="transporter_mobile"
+                   class="form-control form_input"
+                   required>
+          </div>
+
+        </div>
+
+        <div class="form-row text-danger"
+             *ngIf="transporter_business_phone.invalid && (transporter_business_phone.dirty || transporter_business_phone.touched)">
+          Business Phone is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_fax.invalid && (transporter_fax.dirty || transporter_fax.touched)">
+          Fax is required.
+        </div>
+        <div class="text-danger"
+             *ngIf="transporter_email.invalid && (transporter_email.dirty || transporter_email.touched)">
+          <div class="form-row" *ngIf="transporter_email.errors['required']">
+            Email is required.
+          </div>
+          <div class="form-row" *ngIf="transporter_email.errors['email']">
+            Email is not valid.
+          </div>
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_contact_name.invalid && (transporter_contact_name.dirty || transporter_contact_name.touched)">
+          Contact Name is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_contact_phone.invalid && (transporter_contact_phone.dirty || transporter_contact_phone.touched)">
+          Contact Phone is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_mobile.invalid && (transporter_mobile.dirty || transporter_mobile.touched)">
+          Mobile is required.
+        </div>
+
+        <div class="form_header" style="margin-top: 15px">
 
           <h3 style="font-family: 'Trebuchet MS'">Access Details</h3>
 
@@ -199,24 +439,50 @@
 
         <div class="form_row">
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_username"><b>Username</b></label>
-            <input #transporter_username id="transporter_username" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_username"><b>*Username</b></label>
+            <input #transporter_username="ngModel" ngModel name="transporter_username" id="transporter_username"
+                   class="form-control form_input"
+                   required>
           </div>
 
-          <div class="container" style="width: 33%; float: left;">
-            <label class="form_label" for="transporter_password"><b>Password</b></label>
-            <input #transporter_password id="transporter_password" type="password" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: left;">
+            <label class="form_label" for="transporter_password"><b>*Password</b></label>
+            <input #transporter_password="ngModel" ngModel name="transporter_password" id="transporter_password"
+                   type="password"
+                   class="form-control form_input"
+                   required>
           </div>
 
-          <div class="container" style="width: 33%; float: right;">
-            <label class="form_label" for="transporter_password2"><b>Confirm Password</b></label>
-            <input #transporter_password2 id="transporter_password2" type="password" class="form_input" required>
+          <div class="container form-group" style="width: 33%; float: right;">
+            <label class="form_label" for="transporter_password2"><b>*Confirm Password</b></label>
+            <input #transporter_password2="ngModel" ngModel name="transporter_password2" id="transporter_password2"
+                   type="password" compare="transporter_password"
+                   class="form-control form_input"
+                   required>
           </div>
 
         </div>
 
-        <div style="width: 100%">
+        <div class="form-row text-danger"
+             *ngIf="transporter_username.invalid && (transporter_username.dirty || transporter_username.touched)">
+          Username is required.
+        </div>
+        <div class="form-row text-danger"
+             *ngIf="transporter_password.invalid && (transporter_password.dirty || transporter_password.touched)">
+          Password is required.
+        </div>
+        <div class="text-danger"
+             *ngIf="transporter_password2.invalid && (transporter_password2.dirty || transporter_password2.touched)">
+          <div class="form-row" *ngIf="transporter_password2.errors['required']">
+            Confirmation Password is required.
+          </div>
+          <div class="form-row" *ngIf="transporter_password2.errors['compare']">
+            Confirmation Password does not match.
+          </div>
+        </div>
+
+        <div style="width: 100%; margin-top: 10px">
 
           <h6 style="font-family: 'Trebuchet MS'; color: grey">According to our policy, the user name must not refer to
             your surname or contact details (eg. email, phone number etc).</h6>
@@ -224,13 +490,13 @@
         </div>
 
         <div class="checkbox checkbox-success">
-          <input id="transporter_accepts" class="styled" type="checkbox">
+          <input id="transporter_accepts" class="styled" type="checkbox" ngModel name="active" required>
           <label class="form_label" for="transporter_accepts">
             I declare that I am over 18 years old and I agree with the <a href="#">Terms of Use</a>.
           </label>
         </div>
 
-        <button class="btn btn-primary form_label"
+        <button class="btn btn-primary form_label" [disabled]="tf.invalid"
                 style="background-color: #02AFF1 !important; border-color: #02AFF1 !important" type="submit">Register
         </button>
 
@@ -242,7 +508,7 @@
 
   <div class="vertical_line" style="float: left"></div>
 
-  <form id="already_have_an_account"
+  <form id="already_have_an_account" (ngSubmit)="loginUser(login_type.value, login_username, login_password)"
         style="width: 32%; height: 100%; float: left; padding-top:40px; text-align: center">
 
     <h3 style="font-family: 'Trebuchet MS'; color: #02AFF1; font-weight: 700; margin-bottom: 20px">Already have an
@@ -251,8 +517,20 @@
     <div class="form_row">
 
       <div class="container" style="width: 60%;">
+        <label class="form_label" for="login_type"><b>Type</b></label>
+        <select #login_type id="login_type" class="form-control form_input">
+          <option value=0 selected>Individual</option>
+          <option value=1>Transporter</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form_row">
+
+      <div class="container" style="width: 60%;">
         <label class="form_label" for="login_username"><b>Username</b></label>
-        <input #login_username id="login_username" class="form_input" required>
+        <input #login_username id="login_username" class="form-control form_input" required>
       </div>
 
     </div>
@@ -261,9 +539,13 @@
 
       <div class="container" style="width: 60%;">
         <label class="form_label" for="login_password"><b>Password</b></label>
-        <input type="password" #login_password id="login_password" class="form_input" required>
+        <input type="password" #login_password id="login_password" class="form-control form_input" required>
       </div>
 
+    </div>
+
+    <div class="container" *ngIf="individualLoginSuccessful == false">
+      <span class="errorMessage">{{errorMessage}}</span>
     </div>
 
     <button class="btn btn-primary form_label"

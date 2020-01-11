@@ -36,6 +36,7 @@ export interface Transporter {
   mobilePhone: string;
   contactPhone: string;
   city: string;
+  address: string;
   streetNo: number;
   postalCode: number;
   country: number;

@@ -17,12 +17,14 @@ export class NavbarComponent implements OnInit {
 
   constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
 
-    this.username = cookieService.get("username");
-    this.individualLoginSuccessful = true;
+    // this.username = cookieService.get("username");
+    // this.individualLoginSuccessful = true;
 
   }
 
   ngOnInit() {
+    this.username = this.cookieService.get("username");
+    this.individualLoginSuccessful = true;
   }
 
   displayLoginIndividual() {
@@ -79,8 +81,6 @@ export class NavbarComponent implements OnInit {
         return;
       }
 
-      location.reload();
-
       this.cookieService.set("loggedIn", "yes");
       this.cookieService.set("type", "individual");
       this.cookieService.set("username", data.individual.userName);
@@ -119,8 +119,6 @@ export class NavbarComponent implements OnInit {
         return;
       }
 
-      location.reload();
-
       this.cookieService.set("loggedIn", "yes");
       this.cookieService.set("type", "transporter");
       this.cookieService.set("username", data.transporter.userName);
@@ -133,8 +131,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-
-    //location.reload();
 
     this.cookieService.delete("loggedIn");
     this.cookieService.delete("type");
@@ -152,7 +148,11 @@ export class NavbarComponent implements OnInit {
 
   routeHome() {
 
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
 
+  }
+
+  routePostRequest() {
+    this.router.navigate(['postrequest'])
   }
 }

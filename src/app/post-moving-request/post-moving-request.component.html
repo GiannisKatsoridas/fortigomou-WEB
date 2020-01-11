@@ -1,0 +1,73 @@
+<div style="text-align: center; height: 1000px; width: 100%; overflow: hidden">
+  <div style="float: left; width: 10%; height: 100%;"></div>
+  <mat-horizontal-stepper id="stepper" labelPosition="bottom" [linear]="true" #stepper>
+    <mat-step style="height: 100%" optional>
+      <ng-template matStepLabel><span><b style="font-family: 'Trebuchet MS'">Choose Category</b></span></ng-template>
+      <div style="height: 400px; width: 100%; background-color: #cccccc">
+
+        <div style="width: 40%; float: left; padding: 10px;">
+
+          <h3 style="font-family: 'Trebuchet MS'; font-weight: 700; text-align: left; color: #319dff">Choose Category</h3>
+
+          <p style="font-family: 'Trebuchet MS'; text-align: justify">Choose the category that matches better to what you want to transport. Continue by filling the appropriate
+            form You may select only one category per post. If you wish to transport objects from multiple categories,
+            you have to make multiple posts as well.</p>
+
+        </div>
+
+        <div style="width: 60%; float: right; padding: 20px;">
+
+          <button (click)="collapse(content1)" type="button" class="collapsible">Open Section 1</button>
+          <div #content1 class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <button (click)="collapse(content2)" type="button" class="collapsible">Open Section 2</button>
+          <div #content2 class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+
+        </div>
+
+      </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel><span><b style="font-family: 'Trebuchet MS'">Moving/Transport Details</b></span>
+        </ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel><span><b style="font-family: 'Trebuchet MS'">Pickup And Delivery</b></span>
+        </ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Last name, First name" formControlName="thirdCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel><span><b style="font-family: 'Trebuchet MS'">Post Completion</b></span></ng-template>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <div style="width: 10%; height: 100%; float: right"></div>
+</div>

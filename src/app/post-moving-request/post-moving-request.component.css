@@ -1,0 +1,37 @@
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: green;
+  color: #FFFFFF;
+  font-family: "Trebuchet MS";
+}
+
+#stepper {
+
+  width: 80%;
+  float: left;
+  height: 100%
+
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}

@@ -202,3 +202,9 @@ input[type="checkbox"] .styled:checked + label::after {
   margin-left: 20px;
 
 }
+
+.errorMessage {
+  color: #B00200;
+  padding-bottom: 10px;
+}
+

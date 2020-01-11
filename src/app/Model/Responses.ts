@@ -1,10 +1,5 @@
 import {Individual, Transporter} from './Entities';
 
-export interface TestMethodResponse {
-
-  result: string;
-}
-
 export interface GenericResponse {
 
   isSuccessful: boolean;
@@ -21,5 +16,17 @@ export interface LoginIndividualResponse extends GenericResponse {
 export interface LoginTransporterResponse extends GenericResponse {
 
   transporter: Transporter;
+
+}
+
+export interface RegisterIndividualResponse extends GenericResponse {
+
+  result: Individual;
+
+}
+
+export interface RegisterTransporterResponse extends GenericResponse {
+
+  result: Transporter;
 
 }

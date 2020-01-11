@@ -6,7 +6,7 @@
         style="float: right; cursor: pointer; height: 30px; width: 30px; margin: 12px;"></span>
   <span class="flag-icon flag-icon-gr"
         style="float: right; cursor: pointer; height: 30px; width: 30px; margin: 12px"></span>
-  <button mdbBtn type="button" class="btn btn-outline-info waves-effect"
+  <button mdbBtn type="button" (click)="routePostRequest()"  class="btn btn-outline-info waves-effect"
           style="float: right; font-family: 'Trebuchet MS'">Get Quote Now!
   </button>
   <div *ngIf="cookieService.get('loggedIn') == ''">
@@ -92,7 +92,7 @@
             style="float: right; font-family: 'Trebuchet MS'">Logout
     </button>
     <div>
-      <h2 style="float: right; margin-right: 20px; margin-top: 10px; font-family: 'Trebuchet MS'; font-weight: 800">Welcome <i>{{username}}</i></h2>
+      <h2 style="float: right; margin-right: 20px; margin-top: 10px; font-family: 'Trebuchet MS'; font-weight: 800">Welcome <i>{{this.cookieService.get("username")}}</i></h2>
     </div>
   </div>
 
@@ -109,7 +109,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Post Moving
+        <a class="nav-link" (click)="routePostRequest()" style="color: #02AFF1; font-weight: 900; font-family: 'Trebuchet MS'">Post Moving
           Request</a>
       </li>
       <li class="nav-item">
