@@ -30,3 +30,9 @@ export interface RegisterTransporterResponse extends GenericResponse {
   result: Transporter;
 
 }
+
+export interface GetCountriesResponse extends GenericResponse {
+  
+  countries: string[];
+  
+}

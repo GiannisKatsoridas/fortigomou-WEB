@@ -153,6 +153,7 @@ export class NavbarComponent implements OnInit {
   }
 
   routePostRequest() {
-    this.router.navigate(['postrequest'])
+    this.router.navigate(['postrequest']);
+
   }
 }
